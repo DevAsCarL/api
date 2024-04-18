@@ -12,9 +12,6 @@
 - [Client Application Overview](#client-application-overview)
   - [Client Setup Instructions](#client-setup-instructions)
   - [Usage](#usage)
-- [Support](#support)
-- [Author](#author)
-- [License](#license)
 
 ## Project Structure
 | Directory | Description |
@@ -55,9 +52,10 @@ php artisan migrate --seed
 
 # Start the server
 php artisan serve --port=8000
-
-Client Application Overview
-Client Setup Instructions
+```
+## Client Application Overview
+###Client Setup Instructions
+```bash
 # Navigate to the client_example directory
 cd client_example
 
@@ -66,8 +64,7 @@ npm install
 
 # Run the development server
 npm run dev
-Usage
+```
+###Usage
 Open your browser and navigate to http://localhost:5173 to interact with the client application.
 
-Support
-For support, please open an issue in the GitHub repository or submit a pull request if you have improvements or fixes.
