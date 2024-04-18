@@ -52,6 +52,13 @@ php artisan key:generate
 # Run migrations
 php artisan migrate --seed
 
+
+# Generate Keys for Passport Auth
+php artisan passport:keys
+
+# Creating a Personal Access Client for Passport Auth
+php artisan passport:client --personal
+
 # Start the server
 php artisan serve --port=8000
 ```
