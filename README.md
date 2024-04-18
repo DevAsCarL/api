@@ -6,6 +6,7 @@
 - [Project Structure](#project-structure)
 - [API Overview](#api-overview)
   - [API Routes](#api-routes)
+  - [API Swagger](#api-swagger)
   - [API Setup Instructions](#api-setup-instructions)
 - [Client Application Overview](#client-application-overview)
   - [Client Setup Instructions](#client-setup-instructions)
@@ -27,6 +28,9 @@
 #### Protected Routes
 - `GET, POST, PUT, DELETE /api/todos` - CRUD operations on todo items.
 - `GET /api/logout` - Logout the current user.
+### API Swagger Documentation
+
+To access the interactive Swagger API documentation, navigate to the following URL in your web browser: http://localhost:8000/api/documentation
 
 ### API Setup Instructions
 ```bash
