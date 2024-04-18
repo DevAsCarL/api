@@ -7,16 +7,74 @@ use App\Models\TaskStatus;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+
 class TaskController extends Controller
 {
+
     private $userId;
+
     public function __construct()
-    {   
+    {
         $this->userId = auth()->user()->id;
     }
     /**
      * Display a listing of the resource.
      */
+
+    /**
+     * List of TODOS per authenticated user
+     * @OA\Get (
+     *     path="/api/todos",
+     *     tags={"Todos"},
+     * security={
+     *  {"passport": {}},
+     *   },
+     *     @OA\Response(
+     *         response=200,
+     *         description="Ok",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 type="array",
+     *                 property="rows",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="id",
+     *                         type="number",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="task",
+     *                         type="string",
+     *                         example="Running"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="task_status_id",
+     *                         type="numeric",
+     *                         example="1"
+     *                     ),
+     *                      @OA\Property(
+     *                         property="user_id",
+     *                         type="numeric",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         example="2023-02-23T00:09:16.000000Z"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         example="2023-02-23T12:33:45.000000Z"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
+
     public function index()
     {
         return response()->json([
@@ -37,13 +95,76 @@ class TaskController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+    /**
+     * add new TODO
+     * @OA\POST (
+     *     path="/api/todos",
+     *     tags={"Todos"},
+     * security={
+     *  {"passport": {}},
+     *   },
+     *   @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="task",
+     *                     type="string"
+     *                 ),
+     * ))),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Ok",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 type="array",
+     *                 property="rows",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="id",
+     *                         type="number",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="task",
+     *                         type="string",
+     *                         example="Running"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="task_status_id",
+     *                         type="numeric",
+     *                         example="1"
+     *                     ),
+     *                      @OA\Property(
+     *                         property="user_id",
+     *                         type="numeric",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         example="2023-02-23T00:09:16.000000Z"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         example="2023-02-23T12:33:45.000000Z"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
     public function store(Request $request)
     {
         $request->validate([
             'task' => 'required|string'
         ]);
         try {
-            Task::create([
+            $task = Task::create([
                 'task' => $request->task,
                 'task_status_id' => TaskStatus::TODO,
                 'user_id' => $this->userId
@@ -51,6 +172,7 @@ class TaskController extends Controller
             return response()->json([
                 "status" => true,
                 "message" => "successfully created",
+                "task_id" =>  $task->id
             ],  JsonResponse::HTTP_CREATED);
         } catch (\Throwable $e) {
             return response()->json([
@@ -106,6 +228,44 @@ class TaskController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     */
+    /**
+     * Delete todo
+     * @OA\DELETE(
+     *     path="/api/todos/{todo}",
+     *     tags={"Todos"},
+     * security={
+     *  {"passport": {}},
+     *   },
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="todo",
+     *         required=true,
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Todo successfully deleted",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="boolean", example=true),
+     *             @OA\Property(property="message", type="string", example="successfully deleted")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=403,
+     *         description="Forbidden",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Unauthorized action.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Not Found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="No query results for model [App\\Models\\Task] #id")
+     *         )
+     *     )
+     * )
      */
     public function destroy(Task $todo)
     {

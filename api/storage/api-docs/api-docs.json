@@ -1,0 +1,339 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "TODOS CRUD API",
+        "description": "List of TODOS URI's",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/"
+        }
+    ],
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "register user",
+                "description": "Authenticate",
+                "operationId": "d4576a0b2a26dd9236adf2282235bf01",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YmQ1NWQ1OS05OWY4LTQxYTMtOGZmMS0zNDQ1ZmFkYjllODciLCJqdGkiOiI0NzNiZDRhZmUyNTQwNjJjZmM2ZDJiMjIzNWNlMTdhNzdmOGYwNmYzZjhmNzc1OTk2MTZmNmNjZjg0ZjAwN2M0ZGM5MmExZDI0ZGJkMTgyNSIsImlhdCI6MTcxMzQyNTczMS4xNDk4MjksIm5iZiI6MTcxMzQyNTczMS4xNDk4MzEsImV4cCI6MTc0NDk2MTczMS4xNDQ4MjksInN1YiI6IjMiLCJzY29wZXMiOltdfQ.mDGrQ86tmlitdTHPhLjaZHDtl_NoXDZVUxYH8f_hVIs1-ATEZjso3ICOS9yVyoAUV5M8cn3rkB8PISNcr4pxCivNbgbdEndezUZ2lBuuO3dUQ-YPdVf7tyiATAkSQqlGPN71bXnSBeNT1yWx1zvTQnmkOqcYI48MeDQHwEnt41IWpUFpjcSqjavP8_A7d9KuE9XSZ0ggwsVtSERWub8Cqa1VhYsVyLIVfVeIfT0jaYK1uA2g05Kl9fTK72DF6L0D2hUJxvNGuoOs1CzQWdxjHLENIUFcbsZwT2ugwyk1ce7N7Kgoi7EFDwLceVdogGe9yPWrWiKCfokk44h4rugPROdTp4oSHVPo_FtQv8do_MUYFTbRZs6vZUarKgQc1F6hkZImRLEUouXFWsfXS-P_jAraNkuV7YwI14VKPYqWTRZzL0FNWXblfyvpi-Zwu5fD4hCgrpC8-8JHHB_1eXHcOUZEH7I1US0Mt8uz6mw6ezJR4CURapILyMj5r423xoDfHxRmFwv7qLAN-LXOeMGG0qqo-J7hvbvlAK7ZqeB686rXCGPnHku_1tBY1cThQ7z0Avi8V-kXcY2kU2Pasjvc-LRZqcDib5CDVggqypcEbJJSETXbu_UPQwloNYXCAyLYy12vWrgwijJgBJEmttGR4hRkfWC0gSxFMMw0f_WlVVU"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "login user",
+                "operationId": "c64fdb270498e81061530febf0dec4be",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YmQ1NWQ1OS05OWY4LTQxYTMtOGZmMS0zNDQ1ZmFkYjllODciLCJqdGkiOiI0NzNiZDRhZmUyNTQwNjJjZmM2ZDJiMjIzNWNlMTdhNzdmOGYwNmYzZjhmNzc1OTk2MTZmNmNjZjg0ZjAwN2M0ZGM5MmExZDI0ZGJkMTgyNSIsImlhdCI6MTcxMzQyNTczMS4xNDk4MjksIm5iZiI6MTcxMzQyNTczMS4xNDk4MzEsImV4cCI6MTc0NDk2MTczMS4xNDQ4MjksInN1YiI6IjMiLCJzY29wZXMiOltdfQ.mDGrQ86tmlitdTHPhLjaZHDtl_NoXDZVUxYH8f_hVIs1-ATEZjso3ICOS9yVyoAUV5M8cn3rkB8PISNcr4pxCivNbgbdEndezUZ2lBuuO3dUQ-YPdVf7tyiATAkSQqlGPN71bXnSBeNT1yWx1zvTQnmkOqcYI48MeDQHwEnt41IWpUFpjcSqjavP8_A7d9KuE9XSZ0ggwsVtSERWub8Cqa1VhYsVyLIVfVeIfT0jaYK1uA2g05Kl9fTK72DF6L0D2hUJxvNGuoOs1CzQWdxjHLENIUFcbsZwT2ugwyk1ce7N7Kgoi7EFDwLceVdogGe9yPWrWiKCfokk44h4rugPROdTp4oSHVPo_FtQv8do_MUYFTbRZs6vZUarKgQc1F6hkZImRLEUouXFWsfXS-P_jAraNkuV7YwI14VKPYqWTRZzL0FNWXblfyvpi-Zwu5fD4hCgrpC8-8JHHB_1eXHcOUZEH7I1US0Mt8uz6mw6ezJR4CURapILyMj5r423xoDfHxRmFwv7qLAN-LXOeMGG0qqo-J7hvbvlAK7ZqeB686rXCGPnHku_1tBY1cThQ7z0Avi8V-kXcY2kU2Pasjvc-LRZqcDib5CDVggqypcEbJJSETXbu_UPQwloNYXCAyLYy12vWrgwijJgBJEmttGR4hRkfWC0gSxFMMw0f_WlVVU"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/todos": {
+            "get": {
+                "tags": [
+                    "Todos"
+                ],
+                "summary": "List of TODOS per authenticated user",
+                "operationId": "6fa54922cfe13da7cba77fde0e8a6ac5",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "task": {
+                                                        "type": "string",
+                                                        "example": "Running"
+                                                    },
+                                                    "task_status_id": {
+                                                        "type": "numeric",
+                                                        "example": "1"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "numeric",
+                                                        "example": "1"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Todos"
+                ],
+                "summary": "add new TODO",
+                "operationId": "96b93b23ffe20015e761b4ed1c587280",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "task": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "task": {
+                                                        "type": "string",
+                                                        "example": "Running"
+                                                    },
+                                                    "task_status_id": {
+                                                        "type": "numeric",
+                                                        "example": "1"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "numeric",
+                                                        "example": "1"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/todos/{todo}": {
+            "delete": {
+                "tags": [
+                    "Todos"
+                ],
+                "summary": "Delete todo",
+                "operationId": "fb5601e76769b9c023dd974e8d3132d4",
+                "parameters": [
+                    {
+                        "name": "todo",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Todo successfully deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "successfully deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthorized action."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Task] #id"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "apiKey",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "name": "Authorization",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    }
+}
