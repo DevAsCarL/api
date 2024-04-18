@@ -54,7 +54,7 @@ php artisan migrate --seed
 php artisan serve --port=8000
 ```
 ## Client Application Overview
-###Client Setup Instructions
+### Client Setup Instructions
 ```bash
 # Navigate to the client_example directory
 cd client_example
