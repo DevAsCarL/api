@@ -6,7 +6,7 @@
 - [Project Structure](#project-structure)
 - [API Overview](#api-overview)
   - [API Routes](#api-routes)
-  - [API Swagger](#api-swagger)
+  - [API Swagger Documentation](#api-swagger-documentation)
   - [API Setup Instructions](#api-setup-instructions)
 - [Client Application Overview](#client-application-overview)
   - [Client Setup Instructions](#client-setup-instructions)
