@@ -1,8 +1,6 @@
 <!-- Para abrir el preview en Atom: ^ (control) + shift + M -->
 
 # README for Your GitHub Mono-Repo
-[![Platform][Platform]][Platform]
-[![License][License]][License]
 
 ## Table of Contents
 - [Project Structure](#project-structure)
