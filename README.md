@@ -6,8 +6,8 @@
 - [Project Structure](#project-structure)
 - [API Overview](#api-overview)
   - [API Routes](#api-routes)
-  - [API Swagger Documentation](#api-swagger-documentation)
   - [API Setup Instructions](#api-setup-instructions)
+  - [API Swagger Documentation](#api-swagger-documentation)
 - [Client Application Overview](#client-application-overview)
   - [Client Setup Instructions](#client-setup-instructions)
   - [Usage](#usage)
@@ -28,9 +28,6 @@
 #### Protected Routes
 - `GET, POST, PUT, DELETE /api/todos` - CRUD operations on todo items.
 - `GET /api/logout` - Logout the current user.
-### API Swagger Documentation
-
-To access the interactive Swagger API documentation, navigate to the following URL in your web browser: http://localhost:8000/api/documentation
 
 ### API Setup Instructions
 ```bash
@@ -52,9 +49,19 @@ php artisan key:generate
 # Run migrations
 php artisan migrate --seed
 
+# Generate Keys for Passport Auth
+php artisan passport:keys
+
+# Creating a Personal Access Client for Passport Auth
+php artisan passport:client --personal
+
 # Start the server
 php artisan serve --port=8000
 ```
+### API Swagger Documentation
+
+To access the interactive Swagger API documentation, navigate to the following URL in your web browser: http://localhost:8000/api/documentation
+
 ## Client Application Overview
 ### Client Setup Instructions
 ```bash
